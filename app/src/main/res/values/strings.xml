@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AniTracker</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_anime">Anime</string>
+    <string name="nav_manga">Manga</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_profile">Profile</string>
+    
+    <!-- Sections -->
+    <string name="section_trending">Trending Now</string>
+    <string name="section_popular">Popular This Season</string>
+    <string name="section_upcoming">Upcoming</string>
+    <string name="section_top_rated">Top Rated</string>
+    <string name="section_all_time">All Time Popular</string>
+    
+    <!-- Details -->
+    <string name="label_episodes">Episodes</string>
+    <string name="label_chapters">Chapters</string>
+    <string name="label_score">Score</string>
+    <string name="label_status">Status</string>
+    <string name="label_format">Format</string>
+    <string name="label_source">Source</string>
+    <string name="label_genres">Genres</string>
+    <string name="label_studios">Studios</string>
+    <string name="label_synopsis">Synopsis</string>
+    <string name="label_characters">Characters</string>
+    <string name="label_recommendations">Recommendations</string>
+    
+    <!-- Status -->
+    <string name="status_releasing">Releasing</string>
+    <string name="status_finished">Finished</string>
+    <string name="status_not_released">Not Yet Released</string>
+    <string name="status_cancelled">Cancelled</string>
+    
+    <!-- Format -->
+    <string name="format_tv">TV</string>
+    <string name="format_movie">Movie</string>
+    <string name="format_ova">OVA</string>
+    <string name="format_ona">ONA</string>
+    <string name="format_special">Special</string>
+    <string name="format_manga">Manga</string>
+    <string name="format_novel">Light Novel</string>
+    
+    <!-- Actions -->
+    <string name="action_add_to_list">Add to List</string>
+    <string name="action_see_all">See All</string>
+    <string name="action_search">Search anime or manga...</string>
+    <string name="action_retry">Retry</string>
+    
+    <!-- Errors -->
+    <string name="error_network">No internet connection</string>
+    <string name="error_loading">Failed to load data</string>
+    <string name="error_empty">No results found</string>
+</resources>
