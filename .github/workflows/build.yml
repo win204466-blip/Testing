@@ -1,0 +1,86 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Build APK (Debug - Pre-signed)
+      run: ./gradlew assembleDebug
+
+    - name: Build APK (Release - Unsigned)
+      run: ./gradlew assembleRelease || echo "Release build failed, using debug APK"
+      continue-on-error: true
+
+    - name: Sign Release APK (if exists)
+      run: |
+        # Generate a keystore for signing
+        keytool -genkey -v -keystore release.keystore -alias release_key \
+          -keyalg RSA -keysize 2048 -validity 10000 \
+          -storepass android -keypass android \
+          -dname "CN=Android Debug,O=Android,C=US"
+
+        # Try to sign release APK if it exists
+        if [ -f app/build/outputs/apk/release/app-release-unsigned.apk ]; then
+          jarsigner -verbose -sigalg SHA256withRSA -digestalg SHA-256 \
+            -keystore release.keystore -storepass android -keypass android \
+            app/build/outputs/apk/release/app-release-unsigned.apk release_key
+
+          # Align the APK
+          ${{ ANDROID_HOME }}/build-tools/*/zipalign -v 4 \
+            app/build/outputs/apk/release/app-release-unsigned.apk \
+            app/build/outputs/apk/release/app-release-signed.apk || \
+            cp app/build/outputs/apk/release/app-release-unsigned.apk \
+               app/build/outputs/apk/release/app-release-signed.apk
+        fi
+      continue-on-error: true
+
+    - name: Prepare APK for Upload
+      run: |
+        mkdir -p output
+
+        # Priority: signed release > unsigned release > debug
+        if [ -f app/build/outputs/apk/release/app-release-signed.apk ]; then
+          cp app/build/outputs/apk/release/app-release-signed.apk output/Tes-apk.apk
+          echo "✅ Using signed release APK"
+        elif [ -f app/build/outputs/apk/release/app-release-unsigned.apk ]; then
+          cp app/build/outputs/apk/release/app-release-unsigned.apk output/Tes-apk.apk
+          echo "⚠️ Using unsigned release APK"
+        elif [ -f app/build/outputs/apk/release/app-release.apk ]; then
+          cp app/build/outputs/apk/release/app-release.apk output/Tes-apk.apk
+          echo "✅ Using release APK"
+        else
+          # Fallback to debug APK (already signed by default)
+          find app/build/outputs/apk/debug -name "*.apk" -exec cp {} output/Tes-apk.apk \;
+          echo "✅ Using debug APK (pre-signed)"
+        fi
+
+        # Verify APK exists
+        if [ ! -f output/Tes-apk.apk ]; then
+          echo "❌ No APK found!"
+          exit 1
+        fi
+
+        # Show APK info
+        ls -lh output/Tes-apk.apk
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: Tes-apk
+        path: output/Tes-apk.apk
