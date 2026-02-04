@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins & Padding -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+    
+    <!-- Card Dimensions -->
+    <dimen name="card_width">120dp</dimen>
+    <dimen name="card_height">180dp</dimen>
+    <dimen name="card_radius">12dp</dimen>
+    
+    <!-- Grid -->
+    <dimen name="grid_card_width">110dp</dimen>
+    <dimen name="grid_card_height">165dp</dimen>
+    
+    <!-- Banner -->
+    <dimen name="banner_height">200dp</dimen>
+    
+    <!-- Bottom Nav -->
+    <dimen name="bottom_nav_height">56dp</dimen>
+    
+    <!-- Text Sizes -->
+    <dimen name="text_xs">10sp</dimen>
+    <dimen name="text_sm">12sp</dimen>
+    <dimen name="text_md">14sp</dimen>
+    <dimen name="text_lg">16sp</dimen>
+    <dimen name="text_xl">20sp</dimen>
+    <dimen name="text_xxl">24sp</dimen>
+</resources>
