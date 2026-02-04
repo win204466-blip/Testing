@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - AniList inspired -->
+    <color name="primary">#02A9FF</color>
+    <color name="primary_dark">#0288D1</color>
+    <color name="primary_light">#4FC3F7</color>
+    <color name="accent">#FF6F61</color>
+    
+    <!-- Background Colors -->
+    <color name="background_dark">#0B1622</color>
+    <color name="background_card">#151F2E</color>
+    <color name="background_elevated">#1F2A3D</color>
+    <color name="surface">#1A2634</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#8BA0B2</color>
+    <color name="text_tertiary">#5C728A</color>
+    
+    <!-- Status Colors -->
+    <color name="status_watching">#02A9FF</color>
+    <color name="status_completed">#68D639</color>
+    <color name="status_planning">#9256F3</color>
+    <color name="status_dropped">#E85D75</color>
+    <color name="status_paused">#F9D423</color>
+    
+    <!-- Score Colors -->
+    <color name="score_high">#68D639</color>
+    <color name="score_medium">#F9D423</color>
+    <color name="score_low">#E85D75</color>
+    
+    <!-- Misc -->
+    <color name="divider">#2A3B4D</color>
+    <color name="shimmer">#243447</color>
+    <color name="overlay">#80000000</color>
+</resources>
